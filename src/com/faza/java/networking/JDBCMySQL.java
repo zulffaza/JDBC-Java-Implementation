@@ -80,11 +80,31 @@ public class JDBCMySQL {
                     System.out.println("Failed to show result data...");
                     e.printStackTrace();
                 }
+
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            try {
+                statement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         }
     }
 
     public Connection getConnection() {
         return connection;
+    }
+
+    public void closeConnection() {
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

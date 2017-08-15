@@ -4,6 +4,9 @@ public class Main {
 
     public static void main(String[] args) {
         showDataMySQL();
+
+        System.out.println("");
+
         showDataLPostgreSQL();
     }
 
@@ -16,6 +19,8 @@ public class Main {
         if (isSuccess) {
             jdbcMySQL.showData();
         }
+
+        jdbcMySQL.closeConnection();
     }
 
     public static void showDataLPostgreSQL() {
@@ -23,5 +28,11 @@ public class Main {
         boolean isSuccess = jdbcPostgreSQL.createConnection();
 
         System.out.println("Hasil create connection PostgreSQL " + isSuccess);
+
+        jdbcPostgreSQL.createTables();
+        jdbcPostgreSQL.insertDataToTables();
+        jdbcPostgreSQL.showAllLogisticProvider();
+        jdbcPostgreSQL.showInputForm();
+        jdbcPostgreSQL.closeConnection();
     }
 }
